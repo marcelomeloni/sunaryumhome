@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunaryum Whitepaper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="icon" href="../../assets/ico/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../../css/whitepaper.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="grid-lines"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Logo -->
+    <div class="logo">
+        <a href="../../"><img style="height: auto; width: 290px;" src="../../assets/orange_logo.png" alt="Sunaryum Logo" class="logo-image"></a>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="nav-title">Whitepaper Sections</div>
+            <div class="nav-items">
+                <div class="nav-item active" data-section="new-way">
+                    <div class="nav-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="nav-text">A New Way</div>
+                </div>
+                <div class="nav-item" data-section="bitcoin">
+                    <div class="nav-icon"><i class="fab fa-bitcoin"></i></div>
+                    <div class="nav-text">Bitcoin Overview</div>
+                </div>
+                <div class="nav-item" data-section="sunaryum">
+                    <div class="nav-icon"><i class="fas fa-sun"></i></div>
+                    <div class="nav-text">Sunaryum</div>
+                </div>
+                <div class="nav-item" data-section="tokenomics">
+                    <div class="nav-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="nav-text">Tokenomics</div>
+                </div>
+                <div class="nav-item" data-section="usecases">
+                    <div class="nav-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="nav-text">Use Cases</div>
+                </div>
+                <div class="nav-item" data-section="roadmap">
+                    <div class="nav-icon"><i class="fas fa-map"></i></div>
+                    <div class="nav-text">Roadmap</div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- A New Way Section -->
+            <section id="new-way" class="section">
+                <div class="section-header">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">A New Way to Generate, Distribute and Use Energy</h2>
+                    <div class="section-subtitle">Revolutionizing the energy sector through blockchain technology and decentralized solutions</div>
+                </div>
+                
+                <div class="content-text">
+                    Bitcoin, created in 2009 by Satoshi Nakamoto, ushered in a new paradigm for financial transactions by enabling the exchange of value over the internet without the need for a central authority, thanks to distributed consensus and blockchain technology, which ensures transparency and immutability in each transaction. However, the exclusive focus on cryptocurrency transfers left open the opportunity to apply this same robustness to other types of assets — especially those with a direct impact on sustainable development. Sunaryum emerges as this evolution, offering a decentralized energy tokenization infrastructure that converts clean generation units into auditable, tradable, and traceable digital tokens. By eliminating intermediaries and enabling peer-to-peer energy transactions, the platform democratizes access to the energy market, encourages distributed generation, reduces costs, and boosts electric mobility, promoting a more resilient, transparent, and sustainable economic model.
+                </div>
+            </section>
+            
+            <!-- Bitcoin Overview Section -->
+            <section id="bitcoin" class="section">
+                <div class="section-header">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Introduction to Bitcoin</h2>
+                    <div class="section-subtitle">Understanding the foundations of decentralized digital currency</div>
+                </div>
+                
+                <div class="content-text">
+                    <h3>A Brief History</h3>
+                    From the early days of e-cash protocols in the 1980s, which guaranteed privacy but depended on an intermediary, to the proposals of b-money (1998) and “reusable proofs of work” (2005), the dream of a decentralized digital currency had been taking shape for decades. In 2009, Satoshi Nakamoto realized this vision with Bitcoin, by combining public-key cryptography and proof-of-work to create a distributed consensus that was secure and accessible to any participant willing to invest computing power. More recently, the emergence of proof-of-stake with Ethereum opened up new possibilities by linking voting weight to financial stakes, showing that the same principle of decentralization can be adapted to different objectives and levels of energy efficiency.<br><br> Sunaryum brings the blockchain revolution to the solar energy market by converting megawatt-hours of production into auditable and tradable digital tokens. This tokenization not only allows generators to directly monetize their surplus in peer-to-peer transactions, but also enables new financing models for solar projects, instant settlement of energy credits, and full traceability of transactions. By eliminating intermediaries and standardizing solar energy as a digital asset, Sunaryum creates a more flexible, transparent, and inclusive ecosystem where producers of all sizes and consumers share economic and environmental benefits.
+                    
+                    <h3>How Bitcoin Handles Transactions</h3>
+                    Bitcoin ($BTC) tokens can only be created through mining, a process that rewards the miner with a fixed amount of coins for validating a block — a topic we’ll cover later when explaining the Sunaryum mechanism. When a miner receives, for example, 400 BTC and decides to transfer 20 BTC to another wallet, he or she must spend the entire 400 BTC unspent transaction output (UTXO) and then include a 380 BTC “change” output back to himself or herself in the transaction. This is because each UTXO represents an indivisible batch of coins generated in a single mining operation, and the UTXO model dictates that only existing units of currency be spent — the logic of subtracting (20 BTC) and returning change (380 BTC) is all encoded in the transaction itself.
+                    <br><br>
+                    <div class="utxo-transaction">
+                        <div class="incoming-transfers">
+                            <h3>Incoming Transfers</h3>
+                            <ul>
+                                <li><span class="sender">André</span> → <span class="receiver">Me</span> <span class="amount">0.1 SUN</span></li>
+                                <li><span class="sender">Marina</span> → <span class="receiver">Me</span> <span class="amount">0.3 SUN</span></li>
+                                <li><span class="sender">Luis</span> → <span class="receiver">Me</span> <span class="amount">0.6 SUN</span></li>
+                                <li><span class="sender">Mónica</span> → <span class="receiver">Me</span> <span class="amount">0.7 SUN</span></li>
+                            </ul>
+                        </div>
+                
+                        <div class="utxos-section">
+                            <h3>UTXOs</h3>
+                            <div class="note">I want to recharge my car with 0.5 SUN</div>
+                        </div>
+                
+                        <div class="transaction-details">
+                            <div class="input-section">
+                                <h4>Input</h4>
+                                <div class="io-box">
+                                    <span class="amount">0.6 SUN</span> from <span class="sender">Luis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="output-section">
+                                <h4>Output</h4>
+                                <div class="io-box burn">
+                                    <span class="amount">0.5 SUN</span> burn
+                                </div>
+                                <div class="io-box change">
+                                    <span class="amount">0.1 SUN</span> back to me
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      
+                    <br>
+                    <br>
+                    Sunaryum adopts an analogous mechanism to tokenize solar energy: each producer receives, with each block, UTXOs proportional to the volume of kWh injected into the network, and these UTXOs can be freely traded between users. This technology, made possible by the combination of public key cryptography, digital signatures and data structures based on Merkle trees, differs from the traditional bank account model — in which there is an aggregated balance and transactions directly change this total — by working with discrete and immutable units of value (coins or kilowatt-hours). In this way, the innovation of UTXOs allows for greater scalability, complete auditing of each unit of value and native resistance to fraud, since each transaction carries all the information necessary to validate the existence, ownership and conservation of value.
+                    
+                    <h3>How Blockchain Technology Works</h3>
+                    Blockchain technology is a decentralized digital ledger structure that allows information to be stored in a secure, transparent, and immutable manner. Unlike centralized systems, where a single server controls data, blockchain operates on a distributed network of computers (nodes), where each participant has a complete copy of the blockchain. Information is not stored in isolation, but rather grouped into blocks that are validated through consensus algorithms such as Proof of Work (PoW) or Proof of Stake (PoS). Once validated, these blocks are chained chronologically, creating a continuous sequence that is resistant to change.
+                    <br>
+                    <br>
+                    Each block contains three main elements: the transaction data (e.g. token transfers, contracts, or energy measurements), the hash of the current block, and the hash of the previous block. A hash is a one-way cryptographic function (such as SHA-256) that generates a unique identifier from the data contained in the block. Any minor change to the information results in a completely different hash — a phenomenon known as the avalanche effect. This ensures that if someone tries to tamper with a transaction, the change will be immediately detectable because it will invalidate all subsequent blocks in the chain.
+                    <br>
+                    <br>
+                    Blockchain security and integrity rely heavily on cryptographic hash functions, which follow strict criteria: they must be deterministic, fast to compute, collision-resistant (no two different inputs can produce the same hash), irreversible (no one can deduce the original data from the hash), and highly sensitive to changes in the data. These functions make blockchain ideal for applications that require traceability and trust, such as financial systems, digital certificates, logistics tracking, and, in the case of Sunaryum, the tokenization of real-world solar energy.
+                    <br>
+                    <br>
+                    Another pillar of blockchain is the consensus mechanism, which is responsible for ensuring that all nodes in the network agree on the current state of the ledger. In public blockchains, this prevents malicious actors from controlling or manipulating data. Decentralization eliminates the need for trusted intermediaries, promoting participant autonomy and strengthening transparency. Thus, blockchain establishes a new paradigm for distributed systems, allowing digital assets — such as cryptocurrencies or energy representations — to circulate with trust, auditability, and security in real time.
+                </div>
+            </section>
+            
+            <!-- Sunaryum Section -->
+            <section id="sunaryum" class="section">
+                <div class="section-header">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Sunaryum</h2>
+                    <div class="section-subtitle">The future of decentralized energy solutions</div>
+                </div>
+                
+                <div class="content-text">
+                    <h3>Why Sunaryum?</h3>
+                    <h4>Current Issues</h4>
+                    Currently, the energy produced by the population in On-grid systems is centralized and controlled by large distributors, regulating who can generate, sell or buy energy. The On-grid system works based on its connection to the transmission grid; the energy generated that is not consumed in the home is automatically injected into the electrical grid. This energy is transformed into credits that can be used to reduce future consumption. If they are not used within a certain period of time, these credits expire and remain with the concessionaire. The user who participates in this network is remunerated with credits that have limits on their use, and cannot be openly exchanged with anyone, with sales limited to the same CPF/CNPJ (In Brasil, SSN for US), within the same concession area. In addition, the compensation does not consider the real value of the energy in the market, and these credits do not grant the user full ownership of the energy generated, functioning more as a conditional and temporary right to reduce consumption, subject to the rules and limitations imposed by the distributor, which restricts the autonomy and effective economic value of the producer.
+                    <br>
+                    <br>
+                    Another structural problem is the continued dependence on fossil fuels in the global electricity grid, which remains the main contributor to greenhouse gas emissions and, consequently, the acceleration of the climate crisis. Despite advances in renewable energy, the energy transition is occurring slowly and unevenly, largely due to centralized and inflexible models. Current structures keep generation concentrated in large plants, many of which are based on coal, natural gas and oil, which not only worsens environmental impacts but also reinforces an economic logic dependent on volatile markets and unstable geopolitics associated with fossil fuels.
+                    <br>
+                    <br>
+                    Furthermore, there is a clear lack of decentralized renewable generation infrastructure, especially solar energy, which is abundant but underutilized in much of the world. The adoption of photovoltaic systems still faces economic, regulatory, and logistical barriers, both for residential consumers and businesses. The lack of effective incentives, combined with the absence of models that allow for the efficient monetization of the energy generated, discourages investment in solar panels and distributed microgeneration. This scenario not only limits the expansion of clean energy, but also keeps entire populations and regions dependent on a polluting, centralized matrix that is vulnerable to external shocks. Unless there is a structural change, the world will continue to move towards an unsustainable model, incapable of meeting the growing demand for clean, affordable, and resilient energy.
+                    <br>
+                    <br>
+                    These limitations also have a direct impact on emerging sectors, such as electric mobility. The mass adoption of electric vehicles is hindered not only by costs, but mainly by the lack of distributed, accessible and decentralized energy infrastructure. The lack of a robust charging network, combined with an inflexible energy model, discourages both consumers and companies from investing in fleet electrification and sustainable transport.
+                    <br>
+                    <br>
+                    Therefore, the current model not only restricts the autonomy of energy producers, but also prevents significant progress in decarbonizing transport, democratizing energy and building a more efficient, sustainable and accessible energy economy.
+                    
+                    <h4>The Proposed Solution</h4>
+                    Given the challenges presented above, it is urgent to adopt a solution capable of encouraging the decentralized and sustainable generation of electricity, offering fair, transparent and efficient compensation for the surplus produced, especially by photovoltaic plants. In this scenario, the Sunaryum protocol emerges, a blockchain specialized in the tokenization of real energy, where each token represents a certified, traceable and validated unit of energy generated.
+                    <br>
+                    <br>
+                    Unlike centralized solutions, Sunaryum uses its own blockchain infrastructure, allowing the value generated by energy production to be converted directly into a digital asset, without the need for intermediaries. This not only ensures security and auditability, but also eliminates unnecessary operational costs and creates a truly decentralized environment. The Sunaryum token is fundamental to the network’s economy, acting as a unit of value, medium of exchange, store of value, and reward mechanism for producers, validators, and ecosystem participants. It is an indispensable tool for ensuring economic fluidity within a digital energy network, something that would be unfeasible to build using traditional financial structures.
+                    <br>
+                    <br>
+                    The main objective of the Sunaryum protocol is to expand the production of clean energy, allowing any person, company or entity to operate their own “On-grid” micro-node, transforming energy into digital value in a fair and transparent way. Our goal is to provide a public, lightweight, scalable and high-performance blockchain, capable of operating and being maintained even by simple devices. Through this model, we seek to foster a sustainable ecosystem, where the generation of clean energy promotes the mass adoption of electric vehicles, autonomous systems and energy-smart cities. In addition, the Sunaryum token transcends the role of reward, and can be used for payments, access to services, decentralized governance and participation in new markets based on the digital energy economy.
+                    
+                    <h3>Sunaryum Wallet</h3>
+                    The Sunaryum Wallet is the core component that allows users to interact with the blockchain in a secure, private, and fully decentralized manner. Based on the ECDSA algorithm on the SECP256k1 elliptic curve — the same algorithm used by networks like Bitcoin — it is responsible for generating, storing, and operating cryptographic key pairs that represent the user’s digital identity on the network. This identity is purely mathematical: possession of the private key grants full control over the assets and actions associated with the corresponding public key.
+                    <br>
+                    <br>
+                    It all starts with the seed phrase, a sequence of 12 common words that acts as the cryptographic root of the wallet. These words are selected from a standardized list of 2048 terms defined by the BIP-39 specification. They are used because they make it easier to remember, write down, and recover the wallet, and are much more reliable for the user than dealing directly with long hexadecimal numbers. From this sequence, a private key is derived deterministically, allowing the user to restore their wallet on any device, as long as it has the same 12 words. This private key, a 256-bit number, should never be shared, as it allows any message or operation to be digitally signed. From it, the public key is derived — which can be freely exposed and shared — and, optionally, an encrypted address to facilitate its use on the network.
+                    <br>
+                    <br>
+                    Internally, the wallet operates with two main elements: the Signing Key (sk), which represents the private key used to digitally sign data, and the Verifying Key (vk), which is the public key used to validate these signatures. Both are treated in hexadecimal format to facilitate their storage and transport, and can be integrated into files, QR codes or front-end systems. These keys are created with ecdsa.SigningKey.generate(curve=SECP256k1) for new users, or by reconstruction from an existing key derived from the seed.
+                    <br>
+                    <br>
+                    The security of the Sunaryum Wallet is entirely in the user’s control. There are no central servers storing sensitive information: the wallet logic can be executed locally, either in a browser extension or a standalone Python script, without relying on third parties. This eliminates single points of failure, ensures censorship resistance, and reinforces the principles of digital sovereignty. Whoever controls the seed, controls everything — and Sunaryum never accesses, stores, or brokers that control.
+                    
+                    <h3>Token Mining</h3>
+                    Sunaryum coins are backed directly by the solar energy produced by the network’s generators. Every day, at the end of the 24-hour cycle, each producer sends a report to the nearest Sunaryum Full-Node containing the physical amount of kilowatt-hours (kWh) generated and their wallet address. This data is then entered into the mempool and propagated to all nodes in the network, ensuring transparency and resilience.
+                    <br>
+                    <br>
+                    During the creation of a new block, the consensus mechanism processes these measurements and calculates the total number of tokens to mint, with a fixed ratio between kWh and SUN. A transaction is then automatically generated crediting the balance to the producer’s wallet, and the network’s set of UTXOs is updated to reflect these new outputs.
+                    <br>
+                    <br>
+                    Thus, Sunaryum coin generation does not rely on competitive hash power-based mining, but rather on actual clean energy production, aligning economic incentives with positive environmental impact.
+                    
+                    <h3>Technical Architecture of the Sunaryum Blockchain</h3>
+                    <div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-4">Block Structure</h4>
+                        
+                        <div class="bg-gray-50 p-4 rounded-md font-mono text-sm">
+                          <div class="mb-2">
+                            <span class="text-purple-600">"index"</span>
+                          </div>
+                          <div class="mb-2">
+                            <span class="text-purple-600">"timestamp"</span>
+                          </div>
+                          <div class="mb-2">
+                            <span class="text-purple-600">"previous_hash"</span>
+                          </div>
+                          <div class="mb-2">
+                            <span class="text-purple-600">"proposer"</span>
+                          </div>
+                          <div class="mb-2">
+                            <span class="text-purple-600">"transactions"</span> [
+                            <div class="ml-4 border-l-2 border-gray-300 pl-4">
+                              <div>{</div>
+                              <div class="ml-4">
+                                <span class="text-blue-600">"id"</span>,
+                              </div>
+                              <div class="ml-4">
+                                <span class="text-blue-600">"input"</span> [
+                                <span class="text-green-600">"address"</span>,
+                                <span class="text-green-600">"amount"</span>
+                                ],
+                              </div>
+                              <div class="ml-4">
+                                <span class="text-blue-600">"output"</span> [
+                                <span class="text-green-600">"address"</span>,
+                                <span class="text-green-600">"amount"</span>
+                                ],
+                              </div>
+                              <div class="ml-4">
+                                <span class="text-blue-600">"timestamp"</span>,
+                              </div>
+                              <div class="ml-4">
+                                <span class="text-blue-600">"node_reward"</span>:
+                                <span class="text-orange-600">boolean</span>
+                              </div>
+                              <div>}</div>
+                            </div>
+                            ]
+                          </div>
+                          <div>
+                            <span class="text-purple-600">"hash"</span>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    <h4>Node Types</h4>
+        <div class="node-grid">
+            <!-- Full Node Card -->
+            <div class="node-card">
+                <div class="node-header">
+                    <i class="fas fa-server"></i>
+                    <h5>Full Node</h5>
+                </div>
+                <p class="node-description">The network's complete node that plays a central role in blockchain operation and security.</p>
+                
+                <div class="responsibilities">
+                  
+                    <ul>
+                        <li><strong>Receiving production data:</strong> Collects energy production blocks from Production Nodes</li>
+                        <li><strong>Managing transactions:</strong> Validates and propagates token transactions</li>
+                        <li><strong>Participating in elections (VRF):</strong> Joins cryptographic draws to select block proposers</li>
+                        <li><strong>Assembling blocks:</strong> Creates new blocks after validation</li>
+                        <li><strong>Propagating data:</strong> Ensures information spreads across the network</li>
+                    </ul>
+                </div>
+                
+                <div class="node-requirements">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Requires machines with ample storage, stable connectivity, and 24/7 operation
+                </div>
+            </div>
+            
+            <!-- Production Node Card -->
+            <div class="node-card">
+                <div class="node-header">
+                    <i class="fas fa-solar-panel"></i>
+                    <h5>Production Node</h5>
+                </div>
+                <p class="node-description">Typically a microcomputer or embedded device connected directly to solar panels.</p>
+                
+                <div class="responsibilities">
+                   
+                    <ul>
+                        <li><strong>Measuring energy production:</strong> Records generation in real-time or intervals</li>
+                        <li><strong>Assembling production blocks:</strong> Organizes data with timestamps and wallet IDs</li>
+                        <li><strong>Sending data to Full Nodes:</strong> Transmits local blocks for validation</li>
+                        <li><strong>Digitally signing data:</strong> Ensures authenticity with producer's private key</li>
+                    </ul>
+                </div>
+                
+                <div class="node-benefits">
+                    <i class="fas fa-users"></i>
+                    Operable by anyone with solar panels, promoting decentralization
+                </div>
+            </div>
+        </div>
+        
+        <h4>Incentives for Running Nodes</h4>
+        <p>The active participation of nodes is essential for decentralized, reliable and secure network operation. A reward system encourages node maintenance.</p>
+        
+        <div class="incentives-grid">
+            <!-- Full Node Incentives -->
+            <div class="incentive-card">
+                <div class="incentive-header">
+                    <i class="fas fa-coins"></i>
+                    <h5>Full Node Rewards</h5>
+                </div>
+                <ul>
+                    <li>Receive 5% of total tokens generated in daily blocks</li>
+                    <li>Rewards divided equally among participating Full Nodes</li>
+                    <li>Accumulates if reward &lt; 0.001 token to avoid micro-transactions</li>
+                </ul>
+                <div class="incentive-note">
+                    Ensures proportional incentives for network stability contributions
+                </div>
+            </div>
+            
+            <!-- Production Node Incentives -->
+            <div class="incentive-card">
+                <div class="incentive-header">
+                    <i class="fas fa-bolt"></i>
+                    <h5>Production Node Rewards</h5>
+                </div>
+                <ul>
+                    <li>Direct rewards based on solar energy generated</li>
+                    <li>1 token per 100 kWh produced (proportionally scalable)</li>
+                    <li>5% automatically allocated to Full Nodes</li>
+                </ul>
+                
+                <div class="example-box">
+                    <strong>Example:</strong> 200 kWh = 2 tokens
+                    <div class="calculation">
+                        <span>Full Node allocation: 0.1 token (5%)</span>
+                        <span>Producer receives: 1.9 tokens</span>
+                    </div>
+                </div>
+                
+                <div class="incentive-benefits">
+                    Promotes fairness and sustainability in energy contribution
+                </div>
+            </div>
+        </div>
+                </div>
+            </section>
+            
+            <!-- Tokenomics Section -->
+            <section id="tokenomics" class="section">
+                <div class="section-header">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">Tokenomics</h2>
+                    <div class="section-subtitle">Economic model and token distribution</div>
+                </div>
+                
+                <div class="content-text">
+                    <p>The Sunaryum ($SUN) token economy is designed with sustainability, programmed scarcity, and direct alignment with clean energy production in mind. Each token represents a unit of value derived from actual solar power generation, allowing the network’s economics to accurately reflect the energy capacity of its participants.</p>
+                    
+                    <div class="tokenomics-grid">
+                        <!-- Initial Distribution Card -->
+                        <div class="tokenomics-card">
+                            <div class="tokenomics-header">
+                                <i class="fas fa-seedling"></i>
+                                <h5>Initial Distribution</h5>
+                            </div>
+                            <p>The initial token issuance at the genesis block allocates 10,000 SUN to early contributors, internal testing, and the community.</p>
+                            
+                            <div class="distribution-chart">
+                                <div class="chart-item">
+                                    <div class="chart-label">Season 1 Airdrop: 30%</div>
+                                    <div class="chart-bar" style="width: 30%; background: #ed8f07;"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <div class="chart-label">Season 2 Airdrop: 20%</div>
+                                    <div class="chart-bar" style="width: 20%; background: #00c8ff;"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <div class="chart-label">Season 3 Airdrop: 10%</div>
+                                    <div class="chart-bar" style="width: 10%; background: #8a2be2;"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <div class="chart-label">Development Team: 25%</div>
+                                    <div class="chart-bar" style="width: 25%; background: #20b2aa;"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <div class="chart-label">Partnerships & Marketing: 15%</div>
+                                    <div class="chart-bar" style="width: 15%; background: #ff6b6b;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="tokenomics-note">
+                                <i class="fas fa-lightbulb"></i>
+                                Progressive adoption model to reward early participants and ensure resources for growth.
+                            </div>
+                        </div>
+                        
+                        <!-- Continuous Issuance Card -->
+                        <div class="tokenomics-card">
+                            <div class="tokenomics-header">
+                                <i class="fas fa-sync-alt"></i>
+                                <h5>Continuous Issuance (Daily Mint)</h5>
+                            </div>
+                            <p>Tokens are issued daily based on actual solar energy production. The process:</p>
+                            <ul>
+                                <li>Energy producers send daily kWh data to Full Nodes</li>
+                                <li>Fixed conversion rate: kWh → SUN</li>
+                                <li>Tokens credited as UTXOs to producer's wallet</li>
+                            </ul>
+                            
+                            <div class="tokenomics-highlight">
+                                <i class="fas fa-bolt"></i>
+                                Replaces traditional mining with energy merit-based issuance.
+                            </div>
+                        </div>
+                        
+                        <!-- Token Burn Card -->
+                        <div class="tokenomics-card">
+                            <div class="tokenomics-header">
+                                <i class="fas fa-fire"></i>
+                                <h5>Token Burn</h5>
+                            </div>
+                            <p>Deflationary mechanism to balance the economy:</p>
+                            <ul>
+                                <li>Tokens consumed in network services are burned</li>
+                                <li>Applies to EV charging, energy consumption, etc.</li>
+                                <li>Automatically reduces supply</li>
+                            </ul>
+                            
+                            <div class="burn-benefits">
+                                <h6>Benefits:</h6>
+                                <ul>
+                                    <li>Avoids inflation by balancing issuance with consumption</li>
+                                    <li>Maintains energy equivalence for tokens in circulation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Use Cases Section -->
+            <section id="usecases" class="section">
+                <div class="section-header">
+                    <div class="section-number">05</div>
+                    <h2 class="section-title">Use Cases</h2>
+                    <div class="section-subtitle">Practical applications of the Sunaryum ecosystem</div>
+                </div>
+                
+                <div class="content-text">
+                    <div class="usecases-grid">
+                        <!-- Homes with Solar Generation -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h5>Homes with Solar Generation</h5>
+                            <p>Families convert surplus energy into SUN tokens for:</p>
+                            <ul>
+                                <li>Nighttime/cloudy day consumption</li>
+                                <li>P2P energy exchange with neighbors</li>
+                                <li>Financing energy efficiency services</li>
+                                <li>Participating in community energy pools</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Condominiums and Gated Communities -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h5>Condominiums and Gated Communities</h5>
+                            <p>Collective solutions enable:</p>
+                            <ul>
+                                <li>Transparent infrastructure cost division</li>
+                                <li>Incentives for shared panel installation</li>
+                                <li>Internal governance via smart contracts</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Small Rural Producers -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-tractor"></i>
+                            </div>
+                            <h5>Small Rural Producers</h5>
+                            <p>Farms convert solar/biogas into SUN for:</p>
+                            <ul>
+                                <li>Selling to cooperatives/communities</li>
+                                <li>Purchasing agricultural inputs</li>
+                                <li>Reinvesting in sustainable tech</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Electric Vehicle Charging -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-charging-station"></i>
+                            </div>
+                            <h5>Electric Vehicle Charging</h5>
+                            <p>Partner chargers accept SUN:</p>
+                            <ul>
+                                <li>Energy consumed is automatically burned</li>
+                                <li>Stimulates token utility</li>
+                                <li>Reduces currency inflation</li>
+                                <li>Connects mobility with clean energy</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Microgrids in Isolated Regions -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h5>Microgrids in Isolated Regions</h5>
+                            <p>Off-grid areas achieve:</p>
+                            <ul>
+                                <li>Energy autonomy</li>
+                                <li>Surplus trade between microgrids</li>
+                                <li>Regional development stimulation</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- P2P Energy Markets -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h5>P2P Energy Markets & Smart Contracts</h5>
+                            <p>Direct trading with:</p>
+                            <ul>
+                                <li>Automatic agreements (dynamic pricing)</li>
+                                <li>Secure, transparent transactions</li>
+                                <li>Long-term or instant contracts</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Efficiency Programs -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h5>Efficiency and Demand Response</h5>
+                            <p>Users reducing peak consumption:</p>
+                            <ul>
+                                <li>Receive SUN incentives</li>
+                                <li>Adopt efficient appliances</li>
+                                <li>Reduce grid overload</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Community Projects -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5>Community Projects & Crowdfunding</h5>
+                            <p>SUN tokens represent:</p>
+                            <ul>
+                                <li>Participation in solar plants</li>
+                                <li>Financial return proportional to generation</li>
+                                <li>Social engagement in projects</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- IoT Integration -->
+                        <div class="usecase-card">
+                            <div class="usecase-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h5>Integration with IoT & Home Automation</h5>
+                            <p>Devices trade energy via SUN:</p>
+                            <ul>
+                                <li>Home batteries charge during surplus</li>
+                                <li>Systems adjust to dynamic token pricing</li>
+                                <li>Automated residential energy optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Roadmap Section -->
+            <section id="roadmap" class="section">
+                <div class="section-header">
+                    <div class="section-number">06</div>
+                    <h2 class="section-title">Roadmap</h2>
+                    <div class="section-subtitle">Development timeline and future milestones</div>
+                </div>
+                
+                <div class="content-text">
+                    <div class="roadmap-container">
+                        <!-- Q2 2025 -->
+                        <div class="roadmap-item">
+                            <div class="roadmap-period">
+                                <div class="roadmap-date">Q2 2025</div>
+                                <div class="roadmap-title">Prototyping and Initial Validation</div>
+                            </div>
+                            <div class="roadmap-content">
+                                <ul>
+                                    <li>Development of blockchain core and node architecture</li>
+                                    <li>Design and first tests of Sunaryum wallet</li>
+                                    <li>Creation of tokenomic model and airdrop planning</li>
+                                    <li>Definition of energy reward metrics (KWh → SUN)</li>
+                                    <li>Prototyping of energy producers' dashboard</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Q3 2025 -->
+                        <div class="roadmap-item">
+                            <div class="roadmap-period">
+                                <div class="roadmap-date">Q3 2025</div>
+                                <div class="roadmap-title">Testnet and Community Engagement</div>
+                            </div>
+                            <div class="roadmap-content">
+                                <ul>
+                                    <li>Launch of Sunaryum public testnet</li>
+                                    <li>Start of S1 airdrop for early adopters</li>
+                                    <li>Initial integration with charging stations</li>
+                                    <li>Partnerships with solar cooperatives</li>
+                                    <li>Validation of hourly generation via JSON</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Q4 2025 -->
+                        <div class="roadmap-item">
+                            <div class="roadmap-period">
+                                <div class="roadmap-date">Q4 2025</div>
+                                <div class="roadmap-title">Expansion and Community Infrastructure</div>
+                            </div>
+                            <div class="roadmap-content">
+                                <ul>
+                                    <li>Deployment of DAO for initial governance</li>
+                                    <li>Launch of Sunaryum Explorer and Dashboard</li>
+                                    <li>Stimulation of microgrids in rural areas</li>
+                                    <li>Start of Sunaryum Labs program</li>
+                                    <li>Tests with IoT and automation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Q1 2026 -->
+                        <div class="roadmap-item">
+                            <div class="roadmap-period">
+                                <div class="roadmap-date">Q1 2026</div>
+                                <div class="roadmap-title">Stability and Mainnet Preparation</div>
+                            </div>
+                            <div class="roadmap-content">
+                                <ul>
+                                    <li>Network infrastructure improvements</li>
+                                    <li>Protocol and security audit</li>
+                                    <li>Completion of S2 and S3 airdrops</li>
+                                    <li>Adjustments to daily reward system</li>
+                                    <li>Completion of SUN ↔ local currency bridge</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Q2 2026 -->
+                        <div class="roadmap-item">
+                            <div class="roadmap-period">
+                                <div class="roadmap-date">Q2 2026</div>
+                                <div class="roadmap-title">Official Mainnet Launch</div>
+                            </div>
+                            <div class="roadmap-content">
+                                <ul>
+                                    <li>Sunaryum Mainnet 1.0 Launch</li>
+                                    <li>Transition of testnet data and contracts</li>
+                                    <li>Full integration with charging stations</li>
+                                    <li>DAO expansion with open voting</li>
+                                    <li>International adoption campaigns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-logo">SUNARYUM</div>
+                <div class="footer-text">
+                    A New Way to Generate, Distribute and Use Energy<br>
+                    Whitepaper Version 1.0 | © 2025 Sunaryum Foundation
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/whitepaper.js">
+        
+    </script>
+</body>
+</html>
