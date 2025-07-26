@@ -1,54 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunaryum: Build</title>
-    <meta name="description" content="Sunaryum is a decentralized protocol that incentivizes sustainable energy production and powers smart cities through blockchain technology.">
-    <meta name="keywords" content="Sunaryum, blockchain, energy, wallet, crypto, energy token, smart cities, sustainability">
+    <meta name="description"
+        content="Sunaryum is a decentralized protocol that incentivizes sustainable energy production and powers smart cities through blockchain technology.">
+    <meta name="keywords"
+        content="Sunaryum, blockchain, energy, wallet, crypto, energy token, smart cities, sustainability">
     <meta name="author" content="Sunaryum Tech">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="icon" type="image/x-icon" href="../assets/ico/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../css/.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/ico/favicon.ico" />
 </head>
+
 <body>
     <header>
-       <a href="../"> <img class="logo" src="../assets/orange_logo.png" alt="Sunaryum Logo"></a>
-        <nav>
+       <a href="../../index.html"> <img class="logo" src="../../assets/orange_logo.png" alt="Sunaryum Logo"></a>
+
+        <!-- Botão do Menu Hambúrguer -->
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="mainNav">
             <ul>
                 <li class="dropdown">
                     <a href="#learn">Learn <i class='fas fa-angle-down'></i></a>
                     <div class="dropdown-content">
-                        <a href="../learn/what-is-sunaryum/">What is Sunaryum?</a>
-                        <a href="../learn/how-to-get-tokens/">How to get tokens</a>
-                        <a href="../learn/how-to-spend-my-tokens/">How to spend my tokens</a>
-                        <a href="../learn/read-the-whitepaper/">Read the Whitepaper</a>
+                        <a href="../../learn/what-is-sunaryum/">What is Sunaryum?</a>
+                        <a href="../../learn/how-to-get-tokens/">How to get tokens</a>
+                        <a href="../../learn/how-to-spend-my-tokens/">How to spend my tokens</a>
+                        <a href="../../learn/read-the-whitepaper/">Read the Whitepaper</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#build">Build <i class='fas fa-angle-down'></i></a>
                     <div class="dropdown-content">
-                        <a href="../build/run-fullnode/">Run a Full Node</a>
-                        <a href="../build/run-micronode/">Run a Micro Node</a>
-                        <a href="../build/where-buy/">Where to Buy</a>
+                        <a href="../../build/run-fullnode/">Run a Full Node</a>
+                        <a href="../../build/run-micronode/">Run a Micro Node</a>
+                        <a href="../../build/where-buy/">Where to Buy</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#community">Community <i class='fas fa-angle-down'></i></a>
                     <div class="dropdown-content">
-                        <a href="../community/social/">Sunaryum Social Medias</a>
-                 
-                        <a href="../community/events/">Events</a>
+                        <a href="../../community/social/">Sunaryum Social Medias</a>
+                        <a href="../../community/events/">Events</a>
                     </div>
                 </li>
             </ul>
         </nav>
     </header>
     <main>
-<section>
 
-</section>
     </main>
+
+    <footer style="overflow: hidden;" class="relative bg-[#000] text-white pt-40 pb-10">
+        <!-- Background Image -->
+        <img src="../../assets/gifs/sun.gif" alt="Background"
+            class="absolute top-0 right-0 w-1/2 h-auto opacity-20 pointer-events-none select-none" />
+
+        <!-- Glass Container -->
+        <div
+            class="relative mx-auto w-11/12 max-w-6xl bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-10">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Text Left -->
+                <div>
+                    <h2 class="text-2xl font-semibold">A New Way to Generate</h2>
+                    <h2 class="text-2xl font-semibold text-orange-400">Use and Distribute Energy</h2>
+                    <!-- Social Icons -->
+                    <div class="flex gap-4 mt-6 text-xl opacity-80">
+                        <a href="https://x.com/sunaryum"><i class="fab fa-x"></i></a>
+                        <a href="https://discord.com/invite/AZ2TtgAFHz"><i class="fab fa-discord"></i></a>
+
+                        <a href="https://github.com"><i class="fab fa-github"></i></a>
+                        <a href="https://sunaryum.xyz"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links Center -->
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="space-y-1">
+                        <a href="#" class="block hover:underline">Build</a>
+                        <a href="#" class="block hover:underline">Docs</a>
+                        <a href="#" class="block hover:underline">GitHub</a>
+                    </div>
+                    <div class="space-y-1">
+                        <a href="#" class="block hover:underline">Glossary</a>
+                        <a href="#" class="block hover:underline">Blog</a>
+                        <a href="#" class="block hover:underline">Podcast</a>
+                    </div>
+                </div>
+
+                <!-- Links Right -->
+                <div class="space-y-1 text-sm">
+                    <a href="#" class="block hover:underline">Brand</a>
+                    <a href="#" class="block hover:underline">Press</a>
+                    <a href="#" class="block hover:underline">Careers</a>
+                    <a href="#" class="block hover:underline">Community</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="text-center text-xs mt-8 text-white/50">
+            <a href="#" class="hover:underline">Privacy Policy</a> •
+            <a href="#" class="hover:underline">Terms of Service</a>
+            <div class="mt-2">© 2025 Sunaryum</div>
+        </div>
+    </footer>
+    <script src="../../js/nav.js"></script>
 </body>

@@ -1,0 +1,156 @@
+:root {
+    --primary: #ed8f07;
+    --text-dark: #222;
+    --text-light: #666;
+    --transition: all 0.3s ease;
+}
+body{
+    background: #F6F6F6;
+}
+#hero{
+   height: 70vh;
+    font-family: 'Urbanist';
+   
+
+}
+#hero h1{
+    font-size: 90px;
+     line-height: 1.1;
+     font-weight: 600;
+}
+#table{
+        display: flex;
+    border-left: #ed8f07 solid 4px;
+ 
+    flex-direction: column;
+
+}
+#table a {
+ 
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    padding-bottom: 2px; 
+}
+
+.table-contents{
+    margin-left: 100px;
+margin-top: 150px;}
+.table-contents p{
+font-size: 30px;
+margin-top: 30px;
+font-weight: 700;
+color: var(--primary);
+}
+/* -- Gradient Text Utility -- */
+.texts .line {
+  display: block;
+  margin: 0;              /* tira qualquer margin residual */
+   line-height: 1.1; /* Valor compacto */
+    padding-bottom: 0.15em;       /* ajusta espaçamento entre linhas */
+  font-size: 80px;
+  font-weight: 450;
+  background: linear-gradient(90deg, #ed8f07, #ffea00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.3;
+  transform: translateX(var(--tx));
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+.texts .line:not(:last-child) {
+    margin-bottom: -0.15em; /* Valor negativo para aproximar as linhas */
+}
+.from-left  { --tx: -100%; }
+.from-right { --tx: +100%; }
+
+.texts .line.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#whatis { padding-top: 150px; background: #fff;}
+.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;    /* define o espaçamento vertical entre cada .line */
+  height: 100%;
+}
+
+
+.texts span{
+    font-size: 90px;
+    font-weight: 450;
+}
+.textwi{
+    width:  600px;
+    margin-left: auto;
+    font-family: 'Urbanist';
+    font-size: 30px;
+    margin-right: 60px;
+   
+}
+#whatis2{
+    width: 100%;
+    padding: 90px;
+    background-color: #fff;
+}
+ #why{
+            display:flex;
+            background-color: #17141A ;
+            padding: 150px;
+            justify-content: space-around;
+            color: #F6F6F6;
+            font-family: 'Urbanist';
+        }
+        .why-left{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .why-right{
+            display: flex;
+            flex-direction: column;
+        }
+        .why-m{
+            padding: 20px;
+            display: flex;
+            border-top: #F6F6F6 solid 2px;
+            flex-direction: column;
+        }
+        .why-left h1{
+            font-size: 60px;
+        }
+        .why-left span{
+            margin-top: 20px;
+            padding: 15px;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: #ed8f07;
+            transition: var(--transition);
+        }
+        .why-left span:hover{
+            background-color: #F6F6F6;
+            color: #17141A;
+            font-size: 20px;
+        }
+        html, body {
+    overflow-x: hidden;
+}
+        .first-span{
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .why-m span:last-child{
+            margin-top: 15px;
+            font-size: 15;
+        } 
+          .why-m i{
+        margin-right: 10px;
+        font-size: 20px;
+        color: #ed8f07;
+       }

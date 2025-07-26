@@ -517,10 +517,14 @@ nav ul li a i {
 
 /* Animações */
 @keyframes float {
-    0% { transform: translateY(-50%) translateX(0) rotate(10deg); }
-    50% { transform: translateY(-53%) translateX(10px) rotate(12deg); }
-    100% { transform: translateY(-50%) translateX(0) rotate(10deg); }
+    0%   { transform: translateY(-40%) translateX(0px)    rotate(10deg); }
+    20%  { transform: translateY(-47%) translateX(15px)   rotate(16deg); }
+    40%  { transform: translateY(-42%) translateX(8px)    rotate(8deg); }
+    60%  { transform: translateY(-37%) translateX(-15px)  rotate(4deg); }
+    80%  { transform: translateY(-43%) translateX(-8px)   rotate(12deg); }
+    100% { transform: translateY(-40%) translateX(0px)    rotate(10deg); }
 }
+
 
 /* Responsividade */
 @media (max-width: 992px) {

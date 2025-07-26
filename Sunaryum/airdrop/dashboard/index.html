@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunaryum : Airdrop Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        solar: '#ed8f07',
+                        'solar-dark': '#d17f06',
+                        'solar-light': '#f9a53d',
+                        'dark-bg': '#0a0a0a',
+                        'dark-card': 'rgba(20, 20, 20, 0.6)'
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(237, 143, 7, 0.5)',
+                        'inner-glow': 'inset 0 0 10px rgba(237, 143, 7, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #f0f0f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+
+        .solar-gradient {
+            background: linear-gradient(90deg, #ed8f07 0%, #f9a53d 100%);
+        }
+
+        .progress-gradient {
+            background: linear-gradient(90deg, #ed8f07 0%, #f9c53d 100%);
+            box-shadow: 0 0 10px rgba(237, 143, 7, 0.7);
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 15px rgba(237, 143, 7, 0.7);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(237, 143, 7, 0.3);
+            border: 1px solid rgba(237, 143, 7, 0.3);
+        }
+
+        .leaderboard-card {
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(237, 143, 7, 0.4);
+        }
+
+        .locked-badge {
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+
+        .hologram-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hologram-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(237, 143, 7, 0.1) 0%, rgba(237, 143, 7, 0) 50%, rgba(237, 143, 7, 0.1) 100%);
+            transform: rotate(30deg);
+            z-index: 1;
+            animation: hologram 6s infinite linear;
+        }
+
+        @keyframes hologram {
+            0% {
+                transform: rotate(30deg) translateX(-25%);
+            }
+
+            100% {
+                transform: rotate(30deg) translateX(25%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(237, 143, 7, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(237, 143, 7, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(237, 143, 7, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+       #copied-notification {
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+#copied-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-rajdhani relative">
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Persistent Header -->
+    <header class="glass-panel fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center">
+            <h1 class="font-orbitron text-2xl font-bold text-solar">SUNARYUM</h1>
+            <div class="ml-8 text-sm hidden md:block">
+               <span class="wallet-address font-mono mr-2"></span>
+                   <button id="copy-address" class="text-gray-400 hover:text-solar-light transition group relative">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+    </svg>
+    <span class="tooltip-text absolute top-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity">
+        Copy address
+    </span>
+</button>
+            </div>
+        </div>
+<div id="copied-notification" class="fixed top-20 right-4 z-50 px-4 py-2 bg-solar text-gray-900 font-bold rounded-lg shadow-lg opacity-0 transition-opacity duration-300">
+    Address copied!
+</div>
+        <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-2">
+                <span class="text-yellow-500">🔥</span>
+                <span>Streak: <span id="header-streak" class="font-bold">0/7 days</span></span>
+            </div>
+            <button id="logout-button" class="bg-gray-800 hover:bg-gray-700 p-2 rounded-full transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-4 max-w-6xl mx-auto relative z-10">
+        <!-- Navigation Tabs -->
+        <div class="flex border-b border-gray-700 mb-8">
+            <button class="tab-button active px-6 py-3 font-orbitron text-solar border-b-2 border-solar"
+                data-page="missions">Missions & Achievements</button>
+            <button class="tab-button px-6 py-3 font-orbitron text-gray-400 hover:text-solar transition"
+                data-page="leaderboard">Leaderboard</button>
+        </div>
+
+        <!-- Page 1: Missions & Achievements -->
+        <div id="missions-page">
+            <!-- Hero Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Streak Card -->
+                <div class="glass-panel card-hover p-6 relative overflow-hidden">
+                    <div class="hologram-effect"></div>
+                    <div class="flex items-center">
+                        <div class="text-3xl mr-4">🔥</div>
+                        <div>
+                            <h3 class="text-gray-400 text-sm uppercase tracking-wider">Streak Days</h3>
+                            <p id="streak-days" class="font-orbitron text-2xl">0</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-800 rounded-full h-2">
+                            <div id="streak-progress" class="solar-gradient h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Complete 7 days for bonus reward</div>
+                    </div>
+                </div>
+
+                <!-- XP Card -->
+                <div class="glass-panel card-hover p-6 relative overflow-hidden">
+                    <div class="hologram-effect"></div>
+                    <div class="flex items-center">
+                        <div class="text-3xl mr-4">🧬</div>
+                        <div>
+                            <h3 class="text-gray-400 text-sm uppercase tracking-wider">XP Points</h3>
+                            <p id="xp-points" class="font-orbitron text-2xl">0</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-800 rounded-full h-2">
+                            <div id="xp-progress" class="solar-gradient h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <p id="user-level" class="text-xs text-gray-400 mt-1">Level 0 • Next level at 1,000 XP</p>
+                    </div>
+                </div>
+
+                <!-- SUN Balance Card -->
+                <div class="glass-panel card-hover p-6 relative overflow-hidden">
+                    <div class="hologram-effect"></div>
+                    <div class="flex items-center">
+                        <div class="text-3xl mr-4">🌞</div>
+                        <div>
+                            <h3 class="text-gray-400 text-sm uppercase tracking-wider">SUN Balance</h3>
+                            <p id="sun-balance" class="font-orbitron text-2xl">0</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button id="checkin-button"
+                            class="w-full mt-6 bg-solar hover:bg-solar-dark text-gray-900 font-bold py-3 rounded-lg transition hover:shadow-glow">
+                            Daily Check-in
+                        </button>
+                    </div>
+                </div>
+            </div>
+       <!-- Referral Section -->
+<div class="mb-10">
+    <h2 class="font-orbitron text-2xl mb-6">Referral Program</h2>
+    <div class="glass-panel card-hover p-6 relative overflow-hidden">
+        <div class="hologram-effect"></div>
+        
+        <!-- Linha superior: 2 colunas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Coluna 1: Seu Código -->
+            <div class="p-4">
+                <h3 class="font-bold text-lg mb-3">Your Referral Code</h3>
+                <div id="referral-code-container" class="flex items-center">
+                    <!-- Conteúdo dinâmico -->
+                </div>
+            </div>
+            
+            <!-- Coluna 2: Aplicar Código OU Código Usado -->
+            <div id="referral-action-container" class="p-4">
+                <!-- Conteúdo dinâmico -->
+            </div>
+        </div>
+        
+        <!-- Linha inferior: Contagem -->
+        <div class="p-4 bg-gray-800 rounded-lg">
+            <h3 class="font-bold text-lg mb-3 text-center">Your Referrals</h3>
+            <div class="text-3xl font-orbitron text-center" id="referral-count">0</div>
+            <p class="text-gray-400 text-sm text-center">users joined with your code</p>
+        </div>
+    </div>
+</div>
+            <!-- Missions Section -->
+            <div class="mb-10">
+                <h2 class="font-orbitron text-2xl mb-6">Active Missions</h2>
+                <div id="missions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- As missões serão inseridas aqui dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-orbitron text-2xl">Achievements</h2>
+                    <button class="text-solar hover:text-solar-light text-sm font-bold flex items-center">
+                        View All Achievements
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="achievements-container" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <!-- As conquistas serão inseridas aqui dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Leaderboard -->
+        <div id="leaderboard-page" class="hidden">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8">
+                <h2 class="font-orbitron text-2xl relative inline-block">
+                    Top Pioneers
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-solar to-transparent">
+                    </div>
+                </h2>
+
+                <div class="flex mt-4 md:mt-0 space-x-2">
+                    <button class="bg-solar text-gray-900 px-4 py-2 rounded-lg font-bold text-sm">All-Time</button>
+                    <button class="glass-panel hover:bg-gray-800 px-4 py-2 rounded-lg text-sm">Weekly</button>
+                    <button class="glass-panel hover:bg-gray-800 px-4 py-2 rounded-lg text-sm">Daily</button>
+                </div>
+            </div>
+
+            <div id="leaderboard-container" class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                <!-- O leaderboard será inserido aqui dinamicamente -->
+            </div>
+
+            <div class="mt-8 text-center">
+                <button class="glass-panel hover:bg-gray-800 px-6 py-3 rounded-lg font-bold flex items-center mx-auto">
+                    View full ranking
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="../script/missions.js" type="module"></script>
+    <script src="../script/main.js" type="module"></script>
+    <script>
+        // Inicializar Particles.js
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ed8f07"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.1,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.05,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ed8f07",
+                        "opacity": 0.1,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.3
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
+</body>
+
+</html>

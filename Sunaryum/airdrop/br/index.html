@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sunaryum</title>
+    <meta name="description" content="Sunaryum tokeniza energia renovável como Real World Asset (RWA) em blockchain. Participação P2P, airdrop, comunidade e tecnologia descentralizada.">
+    <meta name="keywords" content="Sunaryum, blockchain, energia limpa, RWA, tokenização de energia, airdrop, micro-node, P2P energy trading">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sunaryum – Blockchain para Energia Limpa e RWA">
+    <meta property="og:description" content="Tokenize sua energia renovável com Sunaryum: participe do airdrop, conecte micro-nodes, receba $SUN.">
+    <meta property="og:image" content="https://sunaryum-airdrop.onrender.com/assets/logo.png">
+    <meta property="og:url" content="https://sunaryum-airdrop.onrender.com/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sunaryum – Energia Limpa em Blockchain">
+    <meta name="twitter:description" content="Tokenização de energia renovável como Real World Asset. Acesse o airdrop e conecte seu micro-node.">
+    <meta name="twitter:image" content="https://sunaryum-airdrop.onrender.com/assets/logo.png">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sunaryum",
+      "url": "https://sunaryum-airdrop.onrender.com/",
+      "logo": "https://sunaryum-airdrop.onrender.com/assets/logo.png",
+      "sameAs": [
+        "https://twitter.com/sunaryum", 
+        "https://github.com/sunaryum"
+      ]
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#ED8F07',
+              secondary: '#121212',
+              accent: '#FFA82E',
+              light: '#F5F5F5',
+              dark: '#1A1A1A',
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      :root {
+        --color-primary: #ED8F07;
+        --color-secondary: #121212;
+        --color-accent: #FFA82E;
+        --color-light: #F5F5F5;
+        --color-dark: #1A1A1A;
+      }
+      
+      /* Particles background */
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      
+      /* Animations */
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .pulse {
+        animation: pulse 3s infinite;
+      }
+      
+      .float {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      
+      .fade-in.appear {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      /* Progress bar */
+      .progress-bar {
+        height: 8px;
+        border-radius: 4px;
+        background: rgba(237, 143, 7, 0.2);
+        overflow: hidden;
+      }
+      .email-form-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #successMessage, #errorMessage {
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  #successMessage {
+    background-color: rgba(16, 185, 129, 0.1);
+  }
+  
+  #errorMessage {
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  
+  .hidden {
+    display: none;
+  }
+      .progress-fill {
+        height: 100%;
+        background: var(--color-primary);
+        border-radius: 4px;
+        width: 0%;
+        transition: width 1.5s ease-in-out;
+      }
+      
+      /* Badges */
+      .badge {
+        transition: all 0.3s ease;
+      }
+      
+      .badge:hover {
+        transform: translateY(-5px);
+        filter: drop-shadow(0 5px 15px rgba(237, 143, 7, 0.4));
+      }
+      
+      /* Timeline */
+      .timeline-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 40px;
+      }
+      
+      .timeline-item:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        border: 3px solid var(--color-secondary);
+      }
+      
+      .timeline-item:after {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 25px;
+        height: calc(100% + 25px);
+        width: 2px;
+        background: var(--color-primary);
+      }
+      
+      .timeline-item:last-child:after {
+        display: none;
+      }
+      
+      /* Section spacing */
+      section {
+        padding: 80px 0;
+      }
+      
+      /* Mobile menu */
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+      }
+      
+      .mobile-menu.open {
+        max-height: 500px;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 0;
+        }
+        
+        .hero-content {
+          padding-top: 100px;
+        }
+        
+        .timeline-item:after {
+          height: calc(100% + 15px);
+        }
+      }
+    </style>
+</head>
+<body class="bg-secondary text-light font-sans overflow-x-hidden">
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 bg-secondary z-50 flex items-center justify-center transition-opacity duration-500">
+        <div class="animate-pulse">
+            <img style="width: auto; height: 50px;" src="../images/simbolo.png">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 bg-secondary/90 backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <img style="width: auto; height: 60px;" src="../images/logo.png">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="text-gray-300 hover:text-primary transition-colors">Sobre</a>
+                    <a href="#como-funciona" class="text-gray-300 hover:text-primary transition-colors">Como Funciona</a>
+                    <a href="#roadmap" class="text-gray-300 hover:text-primary transition-colors">Roadmap</a>
+                    <a href="#comunidade" class="text-gray-300 hover:text-primary transition-colors">Comunidade</a>
+                    <a target="_blank" href="../whitepaper/br/" class="text-gray-300 hover:text-primary transition-colors">Whitepaper</a>
+                    <a target="_blank" href="../home/" class="bg-primary hover:bg-accent text-secondary font-semibold py-2 px-6 rounded-lg transition-all transform hover:scale-105">
+                        Airdrop
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-dark">Sobre</a>
+                <a href="#como-funciona" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-dark">Como Funciona</a>
+                <a href="#roadmap" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-dark">Roadmap</a>
+                <a href="#comunidade" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-dark">Comunidade</a>
+                <a href="../whitepaper/br/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-dark">Whitepaper</a>
+                <a href="../home/" class="block mt-2 bg-primary text-secondary font-semibold py-2 px-4 rounded-lg text-center">
+                    Airdrop
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div id="particles-js" class="absolute inset-0"></div>
+        <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hero-content flex flex-col items-center text-center max-w-3xl mx-auto">
+                <!-- Logo -->
+                <div class="mb-8 pulse">
+                    <img style="height: auto; width: 90px;" src="../images/simbolo.png">
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 fade-in">
+                    Sunaryum: Tokenize Energia Renovável como RWA em Blockchain
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 fade-in">
+                    Participe da revolução P2P de energia limpa. Ganhe tokens $SUN conectando seu micro-node.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-12 fade-in">
+                    <a target="_blank" href="../home/" class="bg-primary hover:bg-accent text-secondary font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
+                        Participar do Airdrop
+                    </a>
+                    <a target="_blank" href="../whitepaper/br/" class="bg-transparent border-2 border-primary hover:bg-primary/10 text-primary font-bold py-4 px-8 rounded-lg transition-all">
+                        Ler Whitepaper
+                    </a>
+                </div>
+                
+               
+        
+        <!-- Floating token animation -->
+        
+    </section>
+
+    <!-- Sobre Sunaryum -->
+    <section id="sobre" class="bg-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre o Sunaryum</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Sunaryum tokeniza kWh gerados por micro-nodes, permitindo recompensa justa e P2P trading.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Visão</h3>
+                    <p class="text-gray-300">
+                        Criar uma rede global descentralizada de energia renovável, democratizando o acesso e a participação.
+                    </p>
+                </div>
+                
+                <div class="card bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Missão</h3>
+                    <p class="text-gray-300">
+                        Incentivar a geração de energia limpa através de recompensas justas e tecnologia blockchain.
+                    </p>
+                </div>
+                
+                <div class="card bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Valor</h3>
+                    <p class="text-gray-300">
+                        Transparência, sustentabilidade, descentralização e justiça na distribuição de recompensas.
+                    </p>
+                </div>
+                
+                <div class="card bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tecnologia</h3>
+                    <p class="text-gray-300">
+                        Blockchain de alto desempenho, IoT para sensoriamento e smart contracts para automatização.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona" class="bg-secondary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Como Funciona</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Um processo simples para transformar sua energia renovável em tokens $SUN
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item fade-in">
+                    <h3 class="text-xl font-bold mb-2">1. Conectar Micro-Node</h3>
+                    <p class="text-gray-300">
+                        Instale o hardware/sensor em seu gerador de energia renovável e configure o firmware.
+                    </p>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <h3 class="text-xl font-bold mb-2">2. Registrar Produção</h3>
+                    <p class="text-gray-300">
+                        Sensoriamento contínuo e registro de dados assinados digitalmente na blockchain.
+                    </p>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <h3 class="text-xl font-bold mb-2">3. Validação & Tolerância</h3>
+                    <p class="text-gray-300">
+                        Verificação diária (até 5% de variação permitida) e relatório enviado ao Node Central.
+                    </p>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <h3 class="text-xl font-bold mb-2">4. Receber Tokens $SUN</h3>
+                    <p class="text-gray-300">
+                        Recompensa proporcional à energia gerada distribuída via smart contract.
+                    </p>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <h3 class="text-xl font-bold mb-2">5. Participar da Comunidade</h3>
+                    <p class="text-gray-300">
+                        Compartilhar insights, propor melhorias e engajar em iniciativas colaborativas.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800 max-w-2xl mx-auto fade-in">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold">Gamificação</h3>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    Conclua cada etapa para desbloquear badges exclusivos e aumentar sua reputação na comunidade.
+                </p>
+                <div class="flex justify-center gap-4">
+                    <div class="badge bg-gray-800 p-4 rounded-full">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <div class="badge bg-gray-800 p-4 rounded-full">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="badge bg-gray-800 p-4 rounded-full">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics -->
+<!-- Tokenomics -->
+<section id="tokenomics" class="bg-dark">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Tokenomics</h2>
+            <p class="text-gray-300 max-w-3xl mx-auto">
+                Distribuição do Bloco Gênesis $SUN
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div class="fade-in">
+                <div class="relative w-64 h-64 mx-auto">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold">10K</div>
+                            <div class="text-primary">$SUN</div>
+                            <div class="text-sm text-gray-300 mt-2">Gênesis Supply</div>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1e293b" stroke-width="3"></path>
+                        <path class="circle" stroke="#ED8F07" stroke-dasharray="30, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3" stroke-linecap="round" fill="none"></path>
+                        <path class="circle" stroke="#FFA82E" stroke-dasharray="20, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3" stroke-linecap="round" fill="none" stroke-dashoffset="-30"></path>
+                        <path class="circle" stroke="#F5F5F5" stroke-dasharray="15, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3" stroke-linecap="round" fill="none" stroke-dashoffset="-50"></path>
+                        <path class="circle" stroke="#94A3B8" stroke-dasharray="20, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3" stroke-linecap="round" fill="none" stroke-dashoffset="-65"></path>
+                        <path class="circle" stroke="#4ADE80" stroke-dasharray="15, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3" stroke-linecap="round" fill="none" stroke-dashoffset="-85"></path>
+                    </svg>
+                </div>
+                
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-primary rounded mr-2"></div>
+                        <span class="text-sm">Stage 1: 30%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-accent rounded mr-2"></div>
+                        <span class="text-sm">Stage 2: 20%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-light rounded mr-2"></div>
+                        <span class="text-sm">Stage 3: 15%</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-gray-400 rounded mr-2"></div>
+                        <span class="text-sm">Desenv: 20%</span>
+                    </div>
+                    <div class="flex items-center col-span-2">
+                        <div class="w-4 h-4 bg-green-400 rounded mr-2"></div>
+                        <span class="text-sm">Marketing/Parceiros: 15%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in">
+                <div class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800 mb-8">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Distribuição por Participação</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-medium">Airdrop - Stage 1</span>
+                                    <span class="text-xs text-gray-400 block">Primeiros participantes</span>
+                                </div>
+                                <span>30%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="bg-primary h-3 rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-medium">Airdrop - Stage 2</span>
+                                    <span class="text-xs text-gray-400 block">Segunda leva de participantes</span>
+                                </div>
+                                <span>20%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="bg-accent h-3 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-medium">Airdrop - Stage 3</span>
+                                    <span class="text-xs text-gray-400 block">Participantes tardios</span>
+                                </div>
+                                <span>15%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="bg-light h-3 rounded-full" style="width: 15%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-medium">Desenvolvimento</span>
+                                    <span class="text-xs text-gray-400 block">Equipe e infraestrutura</span>
+                                </div>
+                                <span>20%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="bg-gray-400 h-3 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-medium">Marketing/Parceiros</span>
+                                    <span class="text-xs text-gray-400 block">Parcerias estratégicas</span>
+                                </div>
+                                <span>15%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-3">
+                                <div class="bg-green-400 h-3 rounded-full" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-800">
+                    <h3 class="text-lg font-bold mb-4 text-primary">Benefícios por Estágio</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center bg-dark p-4 rounded-lg">
+                            <div class="text-2xl font-bold text-primary mb-2">Stage 1</div>
+                            <div class="text-sm">+30% tokens</div>
+                        </div>
+                        <div class="text-center bg-dark p-4 rounded-lg">
+                            <div class="text-2xl font-bold text-accent mb-2">Stage 2</div>
+                            <div class="text-sm">+20% tokens</div>
+                        </div>
+                        <div class="text-center bg-dark p-4 rounded-lg">
+                            <div class="text-2xl font-bold text-light mb-2">Stage 3</div>
+                            <div class="text-sm">+15% tokens</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mt-4 text-sm italic">
+                        Quanto antes participar, maior sua participação no Bloco Gênesis
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto mt-16 fade-in">
+            <div class="bg-gradient-to-r from-primary/20 to-accent/20 p-8 rounded-2xl border border-primary/30">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Garanta sua posição no Stage 1!</h3>
+                        <p class="text-gray-300">
+                            Os primeiros participantes recebem 30% da distribuição do Bloco Gênesis.
+                        </p>
+                    </div>
+                    <a target="_blank" href="../home/" class="bg-primary hover:bg-accent text-secondary font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 whitespace-nowrap">
+                        Participar do Airdrop
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a target="_blank" href="../whitepaper/br/" class="inline-flex items-center text-primary hover:text-accent transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Veja detalhes completos no Whitepaper
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Roadmap -->
+    <section id="roadmap" class="bg-secondary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Roadmap</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Nosso plano estratégico para revolucionar a energia renovável
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="hidden sm:block">
+                    <div class="flex justify-between relative before:content-[''] before:absolute before:top-1/2 before:left-0 before:right-0 before:h-1 before:bg-primary before:transform before:-translate-y-1/2">
+                        <div class="relative z-10">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-secondary rounded-full"></div>
+                            </div>
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-40 text-center">
+                                <div class="font-bold text-primary">Jun–Ago 2025</div>
+                                <div class="text-sm text-gray-300">Airdrop</div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-secondary rounded-full"></div>
+                            </div>
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-40 text-center">
+                                <div class="font-bold text-primary">Set–Dez 2025</div>
+                                <div class="text-sm text-gray-300">Prototipagem</div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-gray-400 rounded-full"></div>
+                            </div>
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-40 text-center">
+                                <div class="font-bold text-gray-400">Jan–Mar 2026</div>
+                                <div class="text-sm text-gray-400">Testnet</div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-gray-400 rounded-full"></div>
+                            </div>
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-40 text-center">
+                                <div class="font-bold text-gray-400">Abr–Jun 2026</div>
+                                <div class="text-sm text-gray-400">Mainnet</div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-gray-400 rounded-full"></div>
+                            </div>
+                            <div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-40 text-center">
+                                <div class="font-bold text-gray-400">Jul 2026+</div>
+                                <div class="text-sm text-gray-400">Expansão</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile roadmap -->
+                <div class="sm:hidden space-y-8 max-w-md mx-auto">
+                    <div class="bg-dark p-6 rounded-2xl fade-in">
+                        <div class="font-bold text-primary mb-2">Jun–Ago 2025</div>
+                        <h3 class="text-xl font-bold mb-3">Airdrop</h3>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                            <li>Lançamento da campanha de airdrop</li>
+                            <li>Distribuição inicial de tokens $SUN</li>
+                            <li>Formação da comunidade inicial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-dark p-6 rounded-2xl fade-in">
+                        <div class="font-bold text-primary mb-2">Set–Dez 2025</div>
+                        <h3 class="text-xl font-bold mb-3">Prototipagem</h3>
+                        <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                            <li>Desenvolvimento do hardware de micro-node</li>
+                            <li>Testes de sensoriamento inicial</li>
+                            <li>Primeira versão dos smart contracts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-dark p-6 rounded-2xl fade-in">
+                        <div class="font-bold text-gray-400 mb-2">Jan–Mar 2026</div>
+                        <h3 class="text-xl font-bold mb-3">Testnet</h3>
+                        <ul class="list-disc pl-5 text-gray-400 space-y-1">
+                            <li>Implantação da rede de teste</li>
+                            <li>Testes com usuários selecionados</li>
+                            <li>Otimização de desempenho</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="bg-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Benefícios e Casos de Uso</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Por que participar da revolução Sunaryum
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Recompensa Justa</h3>
+                    <p class="text-gray-300">
+                        Receba tokens $SUN proporcionalmente à energia gerada, com pagamentos automáticos via smart contracts.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trading P2P</h3>
+                    <p class="text-gray-300">
+                        Negocie energia diretamente com outros participantes, sem intermediários e com taxas mínimas.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Governança Participativa</h3>
+                    <p class="text-gray-300">
+                        Participe das decisões do protocolo através de votação direta com seus tokens $SUN.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Integração EV</h3>
+                    <p class="text-gray-300">
+                        Utilize tokens $SUN para recarga de veículos elétricos em pontos parceiros.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Diversificação de RWA</h3>
+                    <p class="text-gray-300">
+                        Acesso a investimentos em energia renovável como ativos do mundo real tokenizados.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Incentivo à Energia Limpa</h3>
+                    <p class="text-gray-300">
+                        Contribua ativamente para a transição energética global e redução de emissões de carbono.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comunidade -->
+    <section id="comunidade" class="bg-secondary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comunidade</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Junte-se a milhares de pioneiros na revolução da energia renovável
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="bg-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800 mb-8">
+                        <h3 class="text-xl font-bold mb-6 text-center">Estatísticas da Comunidade</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary">2</div>
+                                <div class="text-gray-300">Membros</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary">0</div>
+                                <div class="text-gray-300">Micro-nodes</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary">1</div>
+                                <div class="text-gray-300">Países</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-primary">0</div>
+                                <div class="text-gray-300">kWh Gerados</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold">Badge de Comunidade</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Conquiste o Badge Comunidade: Participe ativamente e ajude a moderar nossa comunidade.
+                        </p>
+                        <div class="flex justify-center">
+                            <div class="badge bg-gradient-to-br from-primary to-accent p-6 rounded-full">
+                                <svg class="w-12 h-12 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-dark/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-800 h-full">
+                        <h3 class="text-xl font-bold mb-6 text-center">Conecte-se Conosco</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a target="_blank" href="https://discord.gg/AZ2TtgAFHz" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all">
+                                <svg class="w-6 h-6 text-[#5865F2] mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.427-.312.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.14.099.285.198.427.312a.077.077 0 01-.006.128 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.106c.36.698.772 1.363 1.225 1.993a.077.077 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/>
+                                </svg>
+                                <span>Discord</span>
+                            </a>
+                            
+                            <a target="_blank" href="https://x.com/sunaryum" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all">
+                                <svg class="w-6 h-6 text-[#1DA1F2] mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                <span>Twitter</span>
+                            </a>
+                            
+                            <a target="_blank" href="https://instagram.com/netsunaryum" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all">
+                                <svg class="w-6 h-6 text-[#2867B2] mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                            
+                            <a target="_blank" href="https://github.com/marcelomeloni/airdrop-sunaryum-pg" class="flex items-center justify-center bg-gray-800 hover:bg-gray-700 p-4 rounded-lg transition-all">
+                                <svg class="w-6 h-6 text-[#333] mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                </svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="bg-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recursos</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Documentação e materiais para você se aprofundar
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mr-6">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Whitepaper</h3>
+                            <p class="text-gray-300 mb-4">
+                                Documento completo com detalhes técnicos, tokenomics e visão do projeto.
+                            </p>
+                            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-colors">
+                                Baixar PDF
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-primary transition-all fade-in">
+                    <div class="flex items-start mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mr-6">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Documentação Técnica</h3>
+                            <p class="text-gray-300 mb-4">
+                                Guias detalhados para desenvolvedores, integração de APIs e smart contracts.
+                            </p>
+                            <a href="#" class="inline-flex items-center text-primary hover:text-accent transition-colors">
+                                Acessar Docs
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto mt-16 bg-gray-900 rounded-2xl p-8 border border-gray-800 fade-in">
+                <h3 class="text-xl font-bold mb-6 text-center">Receba Atualizações</h3>
+                <p class="text-gray-300 mb-6 text-center">
+                    Inscreva-se para receber as últimas novidades sobre o projeto e o airdrop
+                </p>
+                <div class="email-form-container">
+                    <form id="emailForm" class="flex flex-col sm:flex-row gap-4">
+                      <input 
+                        type="email" 
+                        id="emailInput"
+                        placeholder="Seu melhor email" 
+                        required
+                        class="flex-grow bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      >
+                      <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="bg-primary hover:bg-accent text-secondary font-bold py-3 px-8 rounded-lg transition-colors"
+                      >
+                        Inscrever-se
+                      </button>
+                    </form>
+                    
+                    <!-- Mensagens de feedback -->
+                    <div id="successMessage" class="mt-3 text-green-500 hidden">
+                      <i class="fas fa-check-circle mr-2"></i>Inscrição realizada com sucesso!
+                    </div>
+                    <div id="errorMessage" class="mt-3 text-red-500 hidden">
+                      <i class="fas fa-exclamation-circle mr-2"></i>Ocorreu um erro. Tente novamente.
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="relative py-24 bg-gradient-to-br from-primary to-accent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-secondary">Participe da Revolução da Energia Limpa</h2>
+                <p class="text-secondary/90 mb-10 text-xl">
+                    Junte-se a milhares de pioneiros e comece a gerar valor com sua energia renovável
+                </p>
+                
+                <a href="/home" class="inline-block bg-secondary hover:bg-gray-900 text-primary font-bold py-4 px-12 rounded-lg transition-all transform hover:scale-105 shadow-lg mb-12">
+                    Participar do Airdrop Agora
+                </a>
+                
+                <div class="flex justify-center">
+                    <div class="badge bg-secondary/20 p-4 rounded-full">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center pulse">
+                            <span class="text-primary font-bold">SUN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating tokens -->
+        <div class="absolute top-10 left-10 float">
+            <div class="w-10 h-10 rounded-full bg-secondary/30 flex items-center justify-center">
+                <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
+                    <span class="text-primary text-xs font-bold">SUN</span>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-20 right-20 float" style="animation-delay: 1s;">
+            <div class="w-14 h-14 rounded-full bg-secondary/30 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                    <span class="text-primary text-sm font-bold">SUN</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary p-2 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">Sunaryum</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Tokenizando energia renovável como Real World Asset em blockchain.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/sunaryum" class="text-gray-400 hover:text-primary transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/marcelomeloni/airdrop-sunaryum-pg" class="text-gray-400 hover:text-primary transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/netsunaryum" class="text-gray-400 hover:text-primary transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                            </svg>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Links Rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="../" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                        <li><a target="_blank" href="../home/" class="text-gray-400 hover:text-primary transition-colors">Airdrop</a></li>
+                        <li><a target="_blank" href="../whitepaper/br/" class="text-gray-400 hover:text-primary transition-colors">Whitepaper</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Documentação</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Privacidade</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Política de Cookies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Isenção de Responsabilidade</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Contato</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400">kwedo@gmx.com</li>
+                        <li class="text-gray-400">Espirito Santo do Pinhal, Brasil</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Sunaryum. Todos os direitos reservados.<br>
+                    Sunaryum é uma plataforma blockchain que tokeniza ativos de energia real, promovendo transição para fontes renováveis.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+            
+            // Initialize progress bar animation
+            setTimeout(() => {
+                document.querySelector('.progress-fill').style.width = '0%';
+            }, 100);
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        });
+        
+        // Scroll animations
+        function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        // Configurações do Supabase (substitua com suas credenciais)
+  const SUPABASE_URL = 'https://fhamhyolyolsirfxxhan.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZoYW1oeW9seW9sc2lyZnh4aGFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1NjAyMjIsImV4cCI6MjA2NTEzNjIyMn0.iQIDCKWVZpKlmbKXG60J-nUd5lK-S5Nw5GvDSqE_w1Y';
+
+  document.getElementById('emailForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const emailInput = document.getElementById('emailInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const email = emailInput.value.trim();
+    
+    // Validação simples de e-mail
+    if (!validateEmail(email)) {
+      showError('Por favor, insira um e-mail válido');
+      return;
+    }
+    
+    // Feedback visual durante o carregamento
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    
+    try {
+      // Envia para o Supabase
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/emails`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        },
+        body: JSON.stringify({ email })
+      });
+      
+      if (response.ok) {
+        showSuccess();
+        emailInput.value = ''; // Limpa o campo
+      } else {
+        const error = await response.json();
+        showError(error.message || 'Erro ao cadastrar e-mail');
+      }
+    } catch (err) {
+      showError('Erro de conexão');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Inscrever-se';
+    }
+  });
+
+  // Funções auxiliares
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+
+  function showSuccess() {
+    const success = document.getElementById('successMessage');
+    const error = document.getElementById('errorMessage');
+    
+    success.classList.remove('hidden');
+    error.classList.add('hidden');
+    
+    setTimeout(() => success.classList.add('hidden'), 3000);
+  }
+
+  function showError(message) {
+    const error = document.getElementById('errorMessage');
+    error.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>${message}`;
+    error.classList.remove('hidden');
+    
+    setTimeout(() => error.classList.add('hidden'), 5000);
+  }
+        // Initialize particles
+        function initParticles() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ED8F07"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ED8F07",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                    }
+                }
+            });
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initParticles();
+            initScrollAnimations();
+            
+            // Progress bar animation
+            setTimeout(() => {
+                document.querySelector('.progress-fill').style.width = '0%';
+            }, 100);
+        });
+        
+        // TODO: Integrar com API para dados em tempo real
+        // Exemplo: 
+        // fetch('/api/user-progress')
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     document.querySelector('.progress-fill').style.width = data.progress + '%';
+        //     document.querySelector('.progress-fill').previousElementSibling.textContent = data.progress + '%';
+        //   });
+    </script>
+</body>
+</html>

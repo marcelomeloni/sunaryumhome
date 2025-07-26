@@ -1,0 +1,103 @@
+:root {
+    --primary: #ed8f07;
+    --text-dark: #222;
+    --text-light: #666;
+    --transition: all 0.3s ease;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #F6F6F6;
+}
+#hero{
+    margin-top: 280px;
+    padding-bottom: 190px;
+    margin-left: 200px;
+ 
+}
+
+#hero h1{
+    font-family: 'Urbanist';
+    font-size: 60px;
+    font-weight: 600px;
+ 
+}
+.hero-box{
+    width: 450px;
+}
+#hero span{
+    font-family: 'Urbanist';
+    font-size: medium;
+    font-weight: 500;
+    color: var(--text-light);
+}
+#social{
+    background-color: #17141A;
+   
+}
+.social-container{
+    width: 1000px;
+    padding-top: 100px;
+    padding-bottom: 140px;
+    margin: 0 auto;
+}
+.social-box{
+    margin-top: 20px;
+border-radius: 25px;
+border: #F6F6F6 solid 2px;
+display: flex;
+transition: var(--transition);
+  color: #fff;
+  align-items: center;
+  font-family: 'Urbanist';
+    
+}
+.go-to{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.go-to i{
+    margin-right: 30px;
+    color: #17141A;
+}
+.social-box .svg i{
+    font-size: 40px;
+    padding:25px;
+}
+.social-info{
+    display: flex;
+    flex-direction: column;
+  
+}
+.social-info h2{
+    font-size: 25px;
+}
+.social-container .f1{
+    font-family: 'Urbanist';
+    font-size: 70px;
+    font-weight: 500;
+    color: #fff;
+}
+.social-container .f2{
+ font-family: 'Urbanist';
+  color: #fff;
+  font-weight: 500;
+}
+.top-social{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-box:hover{
+    color: #17141A;
+    background-color: #F6F6F6;
+    border: #17141A solid 2px;
+}
+#social .social-box:hover .svg svg path {
+  fill: #17141A;
+}

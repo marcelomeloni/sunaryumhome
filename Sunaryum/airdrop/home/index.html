@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunaryum | Airdrop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style/home.css">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Efeito de partículas -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Sunaryum Logo" class="logo-image">
+       
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-sun"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Power up your Web3 journey</h1>
+            <p class="hero-subtitle">Connect your wallet to start your tokenized energy experience</p>
+            <button class="cta-button" id="connectWalletBtn">
+                Connect Wallet <i class="fas fa-plug"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-solar-panel"></i>
+            </div>
+            <h3>Energy that Becomes Value</h3>
+            <p>Produce clean energy and receive real-world tokens. Each watt counts as an asset in the digital world.</p>
+        </div>
+    
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-seedling"></i>
+            </div>
+            <h3>Sustainable Blockchain            </h3>
+            <p>Infrastructure designed to reward sustainability, without polluting mining or unnecessary fees.
+            </p>
+        </div>
+    
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-sun"></i>
+            </div>
+            <h3>Power in the Hands of the Community
+            </h3>
+            <p>Sunaryum is driven by those who generate, connect and believe in a fairer and more accessible energy future.
+            </p>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="../whitepaper/">Documentation
+            </a>
+            
+        </div>
+        
+        <div class="social-icons">
+            <a target="_blank" href="https://x.com/sunaryum"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://discord.gg/WxcFdA2vvh"><i class="fab fa-discord"></i></a>
+            <a target="_blank" href="https://github.com/marcelomeloni/airdrop-sunaryum-pg/"><i class="fab fa-github"></i></a>
+            <a target="_blank" href="http://instagram.com/netsunaryum"><i class="fab fa-instagram"></i></a>
+        </div>
+        
+        <p class="copyright">© 2025 Sunaryum. All rights reserved
+            .</p>
+    </footer>
+
+    <!-- Modal para extensão não instalada -->
+    <div id="noExtensionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-particles" id="modalParticles"></div>
+            <div class="modal-header">
+                <h2><i class="fas fa-plug"></i> Connect to Sunaryum Network                </h2>
+            </div>
+            <div class="modal-body">
+                <p>For a complete experience, we recommend the Sunaryum Wallet extension. If you prefer, you can create or import a wallet directly.
+                </p>
+                
+                <div class="modal-options">
+                    <div class="option-card" id="installExtensionOption">
+                        <i class="fas fa-download"></i>
+                        <h3>Install Extension
+                        </h3>
+                        <p>Get the Firefox extension and access all the features
+                        </p>
+                    </div>
+                    
+                    <div class="option-card" id="createWalletOption">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Create/Import Wallet
+                        </h3>
+                        <p>Generate a new wallet or import an existing one to get started
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>Need help?
+                    <a href="../whitepaper/" style="color: #ffa500;">Visit our documentation
+                    </a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para criar/importar carteira -->
+    <div id="walletCreationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-particles" id="modalParticles2"></div>
+            <div class="modal-header">
+                <h2><i class="fas fa-wallet"></i> Manage Wallet
+                </h2>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" data-tab="create">Create New Wallet
+                </button>
+                <button class="tab" data-tab="import">Import with Seed
+                </button>
+            </div>
+            
+            <div id="createWalletTab" class="tab-content active">
+                <div class="seed-phrase-container">
+                    <div id="seedPhraseGrid" class="seed-grid"></div>
+                    <div class="seed-actions">
+                        <button id="generateSeedBtn" class="btn-action">
+                            <i class="fas fa-sync"></i> Generate New Seed
+
+                        </button>
+                        <button id="toggleVisibilityBtn" class="btn-action">
+                            <i class="fas fa-eye"></i> <span>Show Seed
+                            </span>
+                        </button>
+                        <button id="copySeedBtn" class="btn-action">
+                            <i class="fas fa-copy"></i> <span>Copy</span>
+                        </button>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Keep this seed in a safe place. It is the only way to recover your wallet. Do not share it with anyone!
+                        </p>
+                    </div>
+                    <button id="continueBtn" class="btn-continue" disabled>
+                        Continue to Dashboard
+
+                    </button>
+                </div>
+            </div>
+            
+            <div id="importWalletTab" class="tab-content">
+                <div class="import-container">
+                    <label for="seedInput">Enter your seed phrase (12 words):
+                    </label>
+                    <textarea id="seedInput" placeholder="example: word1 word2 ... word12"></textarea>
+                    <button id="importBtn" class="btn-import">Import Wallet
+                    </button>
+                    <div id="importStatus" class="status-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../script/supabase.js"></script>
+    <script type="module" src="../script/home.js"></script>
+  
+    <script>
+      
+    </script>
+</body>
+</html>

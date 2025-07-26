@@ -1,0 +1,1069 @@
+:root {
+    /* Solar Gradient */
+    --solar-gradient: linear-gradient(135deg, #FFAA33 0%, #FFFF55 100%);
+    --solar-glow: radial-gradient(circle, rgba(255,200,100,0.5) 0%, transparent 70%);
+    
+    /* Neutrals */
+    --dark-bg: #222222;
+    --card-bg: #2D2D2D;
+    --text-light: #DDDDDD;
+    --text-lighter: #FFFFFF;
+    --text-dark: #555555;
+    
+    /* Effects */
+    --glass-bg: rgba(45, 45, 45, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-glow: 0 0 10px rgba(255, 200, 100, 0.5);
+    
+    /* Spacing */
+    --section-spacing: 80px;
+    --container-padding: 24px;
+    
+    /* Typography */
+    --font-inter: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Particle Background */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px var(--container-padding);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 180px;
+    height: 40px;
+    background: var(--solar-gradient);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 20px;
+    color: #222;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: all 0.6s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 170, 51, 0.4);
+    cursor: pointer;
+}
+
+.logo:hover::after {
+    left: 150%;
+}
+
+.streak-container {
+    background: rgba(255, 170, 51, 0.1);
+    border-radius: 20px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.streak-text {
+    animation: streakPulse 2s infinite;
+}
+
+@keyframes streakPulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 8px rgba(255, 100, 0, 0.8); }
+    100% { opacity: 0.8; }
+}
+
+.streak-flame {
+    color: #FFAA33;
+    margin-right: 8px;
+    animation: flameFlicker 1.5s infinite alternate;
+}
+
+@keyframes flameFlicker {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+.wallet-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.wallet-address {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-address:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dropdown-icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.dropdown-menu div {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu div:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Dashboard Hero */
+.dashboard-hero {
+    height: 40vh;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--container-padding);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.dashboard-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    background: var(--solar-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+
+
+/* Footer */
+footer {
+    background: var(--dark-bg);
+    padding: 50px var(--container-padding) 30px;
+    text-align: center;
+}
+
+.footer-message {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-link {
+    color: var(--text-light);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--solar-gradient);
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+.copyright {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+/* Estilo para o botão de check-in */
+.checkin-btn {
+    background: linear-gradient(135deg, #FFAA33 0%, #FFDD55 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 16px 45px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 5px 15px rgba(255, 170, 51, 0.3),
+        0 0 0 2px rgba(255, 200, 100, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.checkin-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 20px rgba(255, 170, 51, 0.4),
+        0 0 0 4px rgba(255, 220, 150, 0.7);
+}
+
+.checkin-btn:active {
+    transform: translateY(1px);
+}
+
+.checkin-btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 3px 10px rgba(255, 170, 51, 0.2);
+}
+
+.checkin-btn i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de processamento */
+.checkin-btn.processing {
+    background: linear-gradient(135deg, #FFAA33 0%, #FFFF88 100%);
+    animation: pulseProcessing 1.5s infinite;
+}
+
+@keyframes pulseProcessing {
+    0% { box-shadow: 0 0 0 0 rgba(255, 170, 51, 0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 170, 51, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 170, 51, 0); }
+}
+
+/* Efeito de sucesso */
+.checkin-btn.success {
+    background: linear-gradient(135deg, #00c853 0%, #b2ff59 100%);
+    box-shadow: 
+        0 5px 15px rgba(0, 200, 83, 0.3),
+        0 0 0 2px rgba(178, 255, 89, 0.5);
+    animation: pulseSuccess 2s ease;
+}
+
+@keyframes pulseSuccess {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(0, 200, 83, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+}
+
+/* Efeito de brilho solar */
+.checkin-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+    transition: all 0.8s ease;
+    pointer-events: none;
+}
+
+.checkin-btn:hover::after {
+    transform: translateX(100%) rotate(30deg);
+}
+
+/* Texto com gradiente solar */
+.checkin-btn span {
+    background: linear-gradient(135deg, #7a5c00 0%, #3d2d00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+}
+/* Adicione isto ao seu arquivo dashboard.css */
+
+/* Estilos para missões */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mission-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.mission-card:hover {
+    transform: translateY(-5px);
+}
+
+.mission-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.mission-icon {
+    width: 50px;
+    height: 50px;
+    
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.mission-icon i {
+    font-size: 24px;
+    color: #4e73df;
+}
+
+.mission-title {
+    margin: 0;
+    font-size: 18px;
+    color: #2d3748;
+}
+
+.mission-description {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.mission-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mission-reward {
+    display: flex;
+    gap: 10px;
+}
+
+.reward-points {
+    background: #e6f7ff;
+    color: #1890ff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.reward-sun {
+    background: #fff7e6;
+    color: #fa8c16;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.mission-action, .mission-link {
+    background: #4e73df;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.mission-action:hover, .mission-link:hover {
+    background: #3b56c0;
+}
+
+.mission-completed {
+    background: #38a169;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: default;
+    font-size: 14px;
+}
+
+.loading-message, .empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #4a5568;
+    font-size: 16px;
+    grid-column: 1 / -1;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #e53e3e;
+    font-size: 16px;
+    grid-column: 1 / -1;
+}
+
+.error-message i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.error-message button {
+    margin-top: 15px;
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    /* ======== MISSÕES SECTION ======== */
+    .missions-section {
+        padding: var(--section-spacing) var(--container-padding);
+    }
+    
+    .missions-section h2 {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 2.8rem;
+        background: var(--solar-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 30px;
+    }
+    
+    .missions-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--solar-gradient);
+        border-radius: 3px;
+    }
+    
+    .missions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+    
+    .mission-card {
+        background: linear-gradient(145deg, rgba(30, 30, 40, 0.85), rgba(20, 20, 30, 0.95));
+        border-radius: 20px;
+        padding: 35px 30px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .mission-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--solar-gradient);
+        opacity: 0.8;
+    }
+    
+    .mission-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 0, 0.3);
+        border: 1px solid rgba(255, 200, 100, 0.3);
+    }
+    
+    .mission-icon-container {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(255, 215, 0, 0.15) 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        position: relative;
+        border: 2px solid rgba(255, 200, 100, 0.2);
+    }
+    
+    .mission-icon {
+        font-size: 2.5rem;
+        color: var(--secondary);
+        z-index: 2;
+    }
+    
+    .mission-icon-container::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(0.95); opacity: 0.7; }
+        50% { transform: scale(1.1); opacity: 0.4; }
+        100% { transform: scale(0.95); opacity: 0.7; }
+    }
+    
+    .mission-card h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--text-lighter);
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mission-card p {
+        margin-bottom: 30px;
+        color: var(--text-light);
+        line-height: 1.8;
+        text-align: center;
+        font-size: 1.1rem;
+        min-height: 100px;
+    }
+    
+    .mission-rewards {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .reward-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(30, 30, 40, 0.7);
+        padding: 15px 25px;
+        border-radius: 15px;
+        min-width: 120px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .reward-label {
+        font-size: 0.95rem;
+        color: #FFAA33;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+    
+    .reward-value {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .reward-value.points::before {
+        content: '✦';
+        color: #4fc3f7;
+    }
+    
+    .reward-value.sun::before {
+        content: '☀️';
+    }
+    
+    .mission-action {
+        display: block;
+        width: 100%;
+        background: var(--solar-gradient);
+        border: none;
+        border-radius: 50px;
+        padding: 16px;
+        font-weight: 700;
+        color: #222;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(255, 170, 51, 0.3);
+    }
+    
+    .mission-action::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FFD700 0%, #FF6B00 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .mission-action:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 170, 51, 0.4);
+    }
+    
+    .mission-action:hover::before {
+        opacity: 1;
+    }
+    
+    /* Estilo para botão de missão completada */
+    .mission-completed {
+        display: block;
+        width: 100%;
+        background: rgba(56, 161, 105, 0.15);
+        border: 1px solid rgba(56, 161, 105, 0.3);
+        border-radius: 50px;
+        padding: 16px;
+        font-weight: 700;
+        color: #38a169;
+        margin-top: 10px;
+        cursor: default;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    /* Estilo para links de missão */
+    .mission-link {
+        display: block;
+        width: 100%;
+        background: var(--solar-gradient);
+        border: none;
+        border-radius: 50px;
+        padding: 16px;
+        font-weight: 700;
+        color: #222;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(255, 170, 51, 0.3);
+    }
+    
+    .mission-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #FFD700 0%, #FF6B00 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .mission-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 170, 51, 0.4);
+        text-decoration: none;
+        color: #222;
+    }
+    
+    .mission-link:hover::before {
+        opacity: 1;
+    }
+    
+    /* ======== CONQUISTAS SECTION ======== */
+    .achievements-section {
+        padding: var(--section-spacing) var(--container-padding);
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .achievements-section h2 {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 2.8rem;
+        background: var(--solar-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 30px;
+    }
+    
+    .achievements-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--solar-gradient);
+        border-radius: 3px;
+    }
+    
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+    
+    .achievement-card {
+        background: linear-gradient(145deg, rgba(30, 30, 40, 0.85), rgba(20, 20, 30, 0.95));
+        border-radius: 20px;
+        padding: 35px 30px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .achievement-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--solar-gradient);
+        opacity: 0.8;
+    }
+    
+    .achievement-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 0, 0.3);
+        border: 1px solid rgba(255, 200, 100, 0.3);
+    }
+    
+    .achievement-icon {
+        font-size: 4rem;
+        margin-bottom: 25px;
+        color: #FFD700;
+        transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover .achievement-icon {
+        transform: scale(1.1);
+    }
+    
+    .achievement-card h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-lighter);
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .achievement-card p {
+        margin-bottom: 30px;
+        color: var(--text-light);
+        line-height: 1.8;
+        font-size: 1.1rem;
+        min-height: 120px;
+    }
+    
+    .achievement-reward {
+        font-weight: 800;
+        color: #FFD700;
+        font-size: 1.5rem;
+        background: rgba(255, 215, 0, 0.1);
+        display: inline-block;
+        padding: 12px 35px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 200, 100, 0.2);
+    }
+    
+    /* Estado de conquista completada */
+    .achievement-card.completed {
+        border: 1px solid rgba(56, 161, 105, 0.3);
+    }
+    
+    .achievement-card.completed::before {
+        background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+    }
+    
+    .achievement-card.completed .achievement-icon {
+        color: #48bb78;
+    }
+    
+    .achievement-card.completed .achievement-reward {
+        color: #48bb78;
+        background: rgba(72, 187, 120, 0.1);
+        border: 1px solid rgba(72, 187, 120, 0.3);
+    }
+    /* ================= RESPONSIVIDADE MOBILE ================= */
+@media (max-width: 768px) {
+    /* Header */
+    header {
+      flex-wrap: wrap;
+      padding: 12px 16px;
+    }
+    
+    .logo {
+      width: 140px;
+      height: 34px;
+      font-size: 16px;
+    }
+    
+    .streak-container {
+      order: 3;
+      width: 100%;
+      margin-top: 8px;
+      justify-content: center;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    
+    /* Dashboard Hero */
+    .dashboard-hero {
+      min-height: auto;
+      padding-top: 100px;
+      padding-bottom: 40px;
+      height: auto;
+    }
+    
+    .dashboard-stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      width: 90%;
+      max-width: 300px;
+      padding: 20px;
+    }
+    
+    /* Botão de Check-in - Foco principal */
+    .checkin-btn {
+      width: 90%;
+      max-width: 350px;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
+    
+    .checkin-btn i {
+      font-size: 1.2rem;
+    }
+    
+    /* Missões */
+    .missions-section,
+    .achievements-section {
+      padding: 40px 16px;
+    }
+    
+    .missions-grid,
+    .achievements-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    
+    .mission-card {
+      padding: 25px 20px;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 30px 16px;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+  
+  /* Ajustes para telas muito pequenas */
+  @media (max-width: 480px) {
+    .wallet-address {
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+    
+    .stat-card {
+      width: 100%;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+    }
+    
+    .checkin-btn {
+      font-size: 1rem;
+      padding: 12px 16px;
+    }
+    
+    .missions-section h2,
+    .achievements-section h2 {
+      font-size: 2rem;
+      padding: 0 15px;
+    }
+  }
